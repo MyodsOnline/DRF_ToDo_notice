@@ -7,21 +7,26 @@ class Command(BaseCommand):
     help = 'Fill database with users'
 
     def handle(self, *args, **options):
-        User.objects.create(
+        User.objects.create_superuser(
+            username='diver',
+            email='diver@vlz.com',
+            password='9501',
+        )
+        User.objects.create_user(
             username='olonnacs',
-            firstname='Sebastian',
-            lastname='Davies',
+            first_name='Sebastian',
+            last_name='Davies',
             email='olonnacs@cispeto.com',
         )
-        User.objects.create(
+        User.objects.create_user(
             username='vaughn',
-            firstname='Vanessa',
-            lastname='Vaughn',
+            first_name='Vanessa',
+            last_name='Vaughn',
             email='vaughn@famism.biz',
         )
-        User.objects.create(
+        User.objects.create_user(
             username='price6791',
-            firstname='Candice',
-            lastname='Needham',
+            first_name='Candice',
+            last_name='Needham',
             email='price6791@gmail.com',
         )

@@ -1,13 +1,10 @@
 from uuid import uuid4
-
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
-class User(models.Model):
+class User(AbstractUser):
     uid = models.UUIDField(primary_key=True, default=uuid4)
-    username = models.CharField(max_length=64, verbose_name='username')
-    firstname = models.CharField(max_length=64, verbose_name='firstname')
-    lastname = models.CharField(max_length=64, verbose_name='lastname')
     email = models.EmailField(blank=False, unique=True, verbose_name='email')
 
     def __str__(self):
