@@ -23,4 +23,4 @@ class ToDo(models.Model):
     is_active = models.BooleanField(default=True, verbose_name='ToDo is active')
 
     def __str__(self):
-        return f'Note for project {self.project} - {self.text}'
+        return f'{self.project} note: {self.text}'
