@@ -16,6 +16,9 @@ class ToDoFilter(filters.FilterSet):
     project = filters.ModelChoiceFilter(queryset=Project.objects.all())
     text = filters.CharFilter(lookup_expr='contains')
 
+    created_at__gt = filters.DateTimeFilter(field_name='created_at', lookup_expr='date__gt')
+    created_at__lt = filters.DateTimeFilter(field_name='created_at', lookup_expr='date__lt')
+
     class Meta:
         model = ToDo
-        fields = ['project', 'text', 'is_active']
+        fields = ['project', 'text', 'is_active', 'created_at']
