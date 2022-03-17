@@ -8,7 +8,7 @@ class User(AbstractUser):
     email = models.EmailField(blank=False, unique=True, verbose_name='email')
 
     def __str__(self):
-        return f'{self.username} - {self.email}'
+        return f'{self.first_name if self.first_name else self.username} - {self.email}'
 
     class Meta:
         verbose_name = 'user'
