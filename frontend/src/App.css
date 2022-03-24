@@ -24,6 +24,10 @@
   color: white;
 }
 
+.table_tr {
+    background: lightgray;
+}
+
 .App-link {
   color: #61dafb;
 }
