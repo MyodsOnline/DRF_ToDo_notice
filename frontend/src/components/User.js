@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 
 const UserItem = ({user}) => {
@@ -8,6 +9,8 @@ const UserItem = ({user}) => {
            <td>{user.firstName}</td>
            <td>{user.lastName}</td>
            <td>{user.email}</td>
+           <td><Link to={`user/${user.uid}`}>See all</Link></td>
+           <td><Link to={`usernotes/${user.uid}`}>See all</Link></td>
        </tr>
    )
 }
@@ -22,6 +25,8 @@ const UserList = ({users}) => {
                     <th>First name</th>
                     <th>Last Name</th>
                     <th>Email</th>
+                    <th>Member of project</th>
+                    <th>Created notes</th>
                 </tr>
             </thead>
             <tbody>

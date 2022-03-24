@@ -12,13 +12,30 @@ code {
     monospace;
 }
 
-header, footer{
-    color: red;
+header, footer {
+    display: flex;
+    justify-content: center;
     font-weight: 700;
     padding: 30px 0;
+    font-size: 20px;
+    background: ghostwhite;
+}
+
+nav {
+    display: flex;
+    width: 500px;
+    justify-content: space-around;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+.table_tr {
+    background: lightgray;
 }
 
 table{
-    margin: 0 auto;
+    margin: 30px auto;
     border: 1px solid;
 }
