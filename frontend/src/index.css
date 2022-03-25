@@ -21,6 +21,10 @@ header, footer {
     background: ghostwhite;
 }
 
+.home ul {
+    list-style: none;
+}
+
 nav {
     display: flex;
     width: 500px;

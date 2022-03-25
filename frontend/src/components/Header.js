@@ -6,7 +6,8 @@ const HeaderItem = () => {
     return (
         <header>
             <nav>
-                <Link to='/'>Users</Link>
+                <Link to='/'>Home</Link>
+                <Link to='/users'>Users</Link>
                 <Link to='/projects'>projects</Link>
                 <Link to='/notes'>notes</Link>
             </nav>

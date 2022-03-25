@@ -3,12 +3,16 @@ import axios from 'axios';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import './index.css';
 import './App.css';
+
 import UserList from './components/User.js';
 import ProjectList from './components/Project.js';
 import TodoList from './components/Todos.js';
+
+import Home from './components/Home.js';
 import HeaderItem from './components/Header.js';
 import FooterItem from './components/Footer.js';
 import NotFound404 from './components/NotFound404.js';
+
 import UserProjectList from './components/UserProject.js';
 import UserNoteList from './components/UserNotes.js';
 
@@ -61,7 +65,8 @@ class App extends React.Component {
                 <BrowserRouter>
                     <HeaderItem/>
                     <Routes>
-                        <Route path='/' element={<UserList users={this.state.users}/>} />
+                        <Route path="/" element={<Home />} />
+                        <Route path='/users' element={<UserList users={this.state.users}/>} />
                         <Route path='/projects' element={<ProjectList projects={this.state.projects} />} />
                         <Route path='/notes' element={<TodoList notes={this.state.notes} />} />
                         <Route path="*" element={<NotFound404 />} />
