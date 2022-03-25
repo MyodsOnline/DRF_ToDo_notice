@@ -3,9 +3,9 @@ import React from 'react'
 
 const ProjectItem = ({project}) => {
    return (
-        <tr class="table_tr">
+        <tr className="table_tr">
             <td>{project.projectName}</td>
-            <td><a href={project.repoLink}>link</a></td>
+            <td><a href={project.repoLink} target="_blank">link</a></td>
             <td>{project.workers}</td>
         </tr>
    )
@@ -23,7 +23,7 @@ const ProjectList = ({projects}) => {
                 </tr>
             </thead>
             <tbody>
-                {projects.map((project) => <ProjectItem project={project} />)}
+                {projects.map((project) => <ProjectItem project={project} key={project.uid} />)}
             </tbody>
         </table>
    )

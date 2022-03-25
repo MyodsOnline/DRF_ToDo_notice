@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-import {BrowserRouter, Route, Link, Switch, Redirect} from 'react-router-dom'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import './index.css';
 import './App.css';
 import UserList from './components/User.js';
@@ -8,17 +8,10 @@ import ProjectList from './components/Project.js';
 import TodoList from './components/Todos.js';
 import HeaderItem from './components/Header.js';
 import FooterItem from './components/Footer.js';
+import NotFound404 from './components/NotFound404.js';
 import UserProjectList from './components/UserProject.js';
 import UserNoteList from './components/UserNotes.js';
 
-
-const NotFound404 = ({location}) => {
-    return (
-        <div>
-            <p>Page with url <code>{location.pathname}</code> not fonud</p>
-        </div>
-    )
-}
 
 class App extends React.Component {
    constructor(props) {
@@ -33,7 +26,7 @@ class App extends React.Component {
     componentDidMount() {
        axios.get('http://127.0.0.1:8081/api/users/')
            .then(response => {
-               const users = response.data
+               const users = response.data.results;
                    this.setState(
                    {
                        'users': users
@@ -67,22 +60,14 @@ class App extends React.Component {
             <div className="App">
                 <BrowserRouter>
                     <HeaderItem/>
-                    <Switch>
-                        <Route exact path='/' component={() => <UserList users={this.state.users} />} />
-                        <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects} />} />
-                        <Route exact path='/notes' component={() => <TodoList notes={this.state.notes} />} />
-                        <Route path='/userprojects/:uid'>
-                            <UserProjectList projects={this.state.projects} />
-                        </Route>
-                        <Route path='/usernotes/:uid'>
-                            <UserNoteList notes={this.state.notes} />
-                        </Route>
-                        <Redirect from='/users' to='/' />
-                        <Route component={NotFound404} />
-                    </Switch>
+                    <Routes>
+                        <Route path='/' element={<UserList users={this.state.users}/>} />
+                        <Route path='/projects' element={<ProjectList projects={this.state.projects} />} />
+                        <Route path='/notes' element={<TodoList notes={this.state.notes} />} />
+                        <Route path="*" element={<NotFound404 />} />
+                    </Routes>
                     <FooterItem/>
                 </BrowserRouter>
-
             </div>
         )
    }

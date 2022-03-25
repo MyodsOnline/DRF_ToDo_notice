@@ -1,9 +1,7 @@
 import React from 'react'
 
-const FooterItem = () => {
-    return (
-        <footer>footer for Users</footer>
-    )
-}
+const FooterItem = () => (
+        <footer>The awesome footer can be here</footer>
+)
 
 export default FooterItem;

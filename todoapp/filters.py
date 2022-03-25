@@ -16,8 +16,15 @@ class ToDoFilter(filters.FilterSet):
     project = filters.ModelChoiceFilter(queryset=Project.objects.all())
     text = filters.CharFilter(lookup_expr='contains')
 
-    created_at__gt = filters.DateTimeFilter(field_name='created_at', lookup_expr='date__gt')
-    created_at__lt = filters.DateTimeFilter(field_name='created_at', lookup_expr='date__lt')
+    # created_at__gt = filters.DateTimeFilter(field_name='created_at',
+    #                                         lookup_expr='date__gt',
+    #                                         input_formats=['%Y-%m-%dT%H:%M'])
+    # created_at__lt = filters.DateTimeFilter(field_name='created_at',
+    #                                         lookup_expr='date__lt',
+    #                                         input_formats=['%Y-%m-%dT%H:%M'])
+
+    create_date = filters.DateFromToRangeFilter(field_name='created_at')
+
 
     class Meta:
         model = ToDo

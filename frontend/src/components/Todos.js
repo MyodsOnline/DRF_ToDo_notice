@@ -4,7 +4,7 @@ import React from 'react'
 const TodoItem = ({note}) => {
     let st = (note.isActive === true) ? 'yes' : 'no';
     return (
-        <tr class="table_tr">
+        <tr className="table_tr">
             <td>{note.project.projectName}</td>
             <td>{note.text}</td>
             <td>{note.createdBy}</td>
@@ -26,7 +26,7 @@ const TodoList = ({notes}) => {
                 </tr>
             </thead>
             <tbody>
-                {notes.map((note) => <TodoItem note={note} />)}
+                {notes.map((note) => <TodoItem key={note.id} note={note}/>)}
             </tbody>
         </table>
    )

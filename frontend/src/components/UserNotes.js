@@ -11,7 +11,7 @@ const UserNoteItem = ({note}) => {
 
 const UserNoteList = ({notes}) => {
     let {uid} = useParams();
-    let filtered_notes = notes.filter((note) => note.created_by.uid === uid)
+    console.log('id', uid)
 
     return (
         <table>
@@ -22,7 +22,6 @@ const UserNoteList = ({notes}) => {
                 </tr>
             </thead>
             <tbody>
-                {filtered_notes.map((note) => <UserNoteItem note={note} />)}
             </tbody>
         </table>
     )
