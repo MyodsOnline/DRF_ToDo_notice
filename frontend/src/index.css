@@ -25,6 +25,15 @@ header, footer {
     list-style: none;
 }
 
+footer {
+    flex-direction: column;
+}
+
+footer span {
+    padding-top: 15px;
+    font-weight: 100;
+}
+
 nav {
     display: flex;
     width: 500px;
@@ -42,4 +51,10 @@ nav a {
 table{
     margin: 30px auto;
     border: 1px solid;
+}
+
+caption {
+    padding-bottom: 10px;
+    font-size: 20px;
+    font-weight: 700;
 }

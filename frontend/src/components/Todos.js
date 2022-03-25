@@ -2,13 +2,13 @@ import React from 'react'
 
 
 const TodoItem = ({note}) => {
-    let st = (note.isActive === true) ? 'yes' : 'no';
+    let status = (note.isActive === true) ? 'yes' : 'no';
     return (
         <tr className="table_tr">
             <td>{note.project.projectName}</td>
             <td>{note.text}</td>
             <td>{note.createdBy}</td>
-            <td>{st}</td>
+            <td>{status}</td>
         </tr>
     )
 }
