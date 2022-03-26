@@ -67,9 +67,10 @@ class App extends React.Component {
                     <HeaderItem/>
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path='/users' element={<UserList users={this.state.users}/>} />
-                        <Route path='/projects/*' element={<ProjectList projects={this.state.projects} notes={this.state.notes}/>} />
-                        <Route path='/notes' element={<TodoList notes={this.state.notes} />} />
+                        <Route path="/users" element={<UserList users={this.state.users}/>} />
+                        <Route path="/projects/*" element={
+                            <ProjectList projects={this.state.projects} notes={this.state.notes}/>} />
+                        <Route path="/notes" element={<TodoList notes={this.state.notes} />} />
                         <Route path="*" element={<NotFound404 />} />
                     </Routes>
                     <FooterItem/>

@@ -25,4 +25,4 @@ class ToDoModelSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = ToDo
-        fields = ['project', 'created_by', 'text', 'is_active', 'updated_at']
+        fields = ['id', 'project', 'created_by', 'text', 'is_active', 'updated_at']
