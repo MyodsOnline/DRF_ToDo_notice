@@ -1,9 +1,5 @@
 import React from 'react'
-import {Routes, Route, Link} from 'react-router-dom'
-
-import ProjectNoteList from './ProjectNote.js';
-
-
+import {Link} from 'react-router-dom'
 
 const ProjectItem = ({project}) => {
    return (
@@ -12,7 +8,7 @@ const ProjectItem = ({project}) => {
             <td><a href={project.repoLink} target="_blank">link</a></td>
             <td>{project.workers}</td>
             <td>
-                <Link to={project.uid} key={project.uid}>See</Link>
+                <Link to={`/projects/${project.id}`} key={project.id}>See</Link>
             </td>
         </tr>
    )
@@ -31,13 +27,8 @@ const ProjectList = ({projects, notes}) => {
                 </tr>
             </thead>
             <tbody>
-                {projects.map((project) => <ProjectItem project={project} key={project.uid} />)}
+                {projects.map((project) => <ProjectItem project={project} key={project.id} />)}
             </tbody>
-
-        <Routes>
-            <Route path=":uid" element={<ProjectNoteList notes={notes} />} />
-        </Routes>
-
         </table>
    )
 }

@@ -1,15 +1,15 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 
 const HeaderItem = () => {
     return (
         <header>
             <nav>
-                <Link to='/'>Home</Link>
-                <Link to='/users'>Users</Link>
-                <Link to='/projects'>projects</Link>
-                <Link to='/notes'>notes</Link>
+                <NavLink to='/'>Home</NavLink>
+                <NavLink to='/users'>Users</NavLink>
+                <NavLink to='/projects'>projects</NavLink>
+                <NavLink to='/notes'>notes</NavLink>
             </nav>
         </header>
     )

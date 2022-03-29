@@ -1,12 +1,12 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
 
-const ProjectNoteList = ({notes}) => {
-    let { uid } = useParams();
-    console.log('yes')
+const ProjectNoteList = () => {
+    console.log(useParams)
+    let { id } = useParams();
     return (
         <div>
-            <p>ID - {uid}</p>
+            <p>ID - {id}</p>
         </div>
     )
 }

@@ -44,6 +44,10 @@ nav a {
     text-decoration: none;
 }
 
+.active {
+    text-decoration: underline;
+}
+
 .table_tr {
     background: lightgray;
 }

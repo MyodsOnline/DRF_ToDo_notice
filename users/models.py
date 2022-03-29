@@ -4,11 +4,11 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    uid = models.UUIDField(primary_key=True, default=uuid4)
+    id = models.UUIDField(primary_key=True, default=uuid4)
     email = models.EmailField(blank=False, unique=True, verbose_name='email')
 
     def __str__(self):
-        return f'{self.first_name if self.first_name else self.username} - {self.email}'
+        return self.username
 
     class Meta:
         verbose_name = 'user'
