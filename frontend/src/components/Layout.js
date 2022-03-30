@@ -1,4 +1,4 @@
-import {Outlet, NavLink} from 'react-router-dom'
+import {Outlet} from 'react-router-dom'
 
 import HeaderItem from './Header.js';
 import FooterItem from './Footer.js';
