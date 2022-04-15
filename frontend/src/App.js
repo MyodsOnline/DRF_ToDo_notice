@@ -69,7 +69,7 @@ class App extends React.Component {
 
     load_data () {
         const headers = this.get_headers()
-        axios.get(API_URL + 'api/users/', {headers})
+        axios.get(API_URL + 'api/1/users/', {headers})
            .then(response => {
                const users = response.data.results;
                    this.setState(
@@ -104,6 +104,14 @@ class App extends React.Component {
         this.get_token_from_storage()
     }
 
+    deleteProject(id) {
+        const headers = this.get_headers()
+        axios.delete(`http://127.0.0.1:8081/api/projects/${id}`, {headers})
+            .then(response => {
+                this.setState({projects: this.state.projects.filter((project) => project.id !== id)})
+            }).catch(error => console.log(error))
+    }
+
     render () {
         return (
             <div className="App">
@@ -116,11 +124,12 @@ class App extends React.Component {
                             <Route path="projects"
                                 element={<ProjectList
                                     projects={this.state.projects}
-                                        users={this.state.users} />} />
+                                    users={this.state.users}
+                                    deleteProject={(id) => this.deleteProject(id)} />} />
                             <Route path="projects/:id"
                                 element={<ProjectDetail
                                     projects={this.state.projects}
-                                        users={this.state.users} />} />
+                                    users={this.state.users} />} />
                             <Route path="notes/*" element={<TodoList notes={this.state.notes} />} >
                                 <Route path=":id" element={<NoteDetail notes={this.state.notes} />} />
                             </Route>
