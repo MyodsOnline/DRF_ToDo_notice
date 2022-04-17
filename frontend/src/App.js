@@ -18,6 +18,10 @@ import ProjectDetail from './components/ProjectDetail.js';
 import UserNoteList from './components/UserNotes.js';
 import NoteDetail from './components/NoteDetail.js';
 
+import ProjectForm from './components/ProjectForm.js';
+import NoteForm from './components/NoteForm.js';
+import TestData from './components/TestPage.js';
+
 
 const API_URL = 'http://127.0.0.1:8081/'
 
@@ -39,7 +43,7 @@ class App extends React.Component {
     }
 
     is_authenticated() {
-        return this.state.token != ''
+        return this.state.token !== ''
     }
 
     logout() {
@@ -106,10 +110,24 @@ class App extends React.Component {
 
     deleteProject(id) {
         const headers = this.get_headers()
-        axios.delete(`http://127.0.0.1:8081/api/projects/${id}`, {headers})
+        axios.delete(`http://127.0.0.1:8081/api/projects/${id}/`, {headers})
             .then(response => {
                 this.setState({projects: this.state.projects.filter((project) => project.id !== id)})
             }).catch(error => console.log(error))
+    }
+
+    deleteNote(id) {
+        const headers = this.get_headers()
+        axios.delete(`http://127.0.0.1:8081/api/todo/${id}/`, {headers})
+        .then(response => {
+            this.setState({notes: this.state.notes.filter((note) => note.id !== id)})
+        }).catch(error => console.log(error))
+    }
+
+    createProject(projectName, repo) {
+        const headers = this.get_headers()
+        const data = {projectName: projectName, repo: repo}
+        console.log(data)
     }
 
     render () {
@@ -126,11 +144,13 @@ class App extends React.Component {
                                     projects={this.state.projects}
                                     users={this.state.users}
                                     deleteProject={(id) => this.deleteProject(id)} />} />
+                            <Route path="projects/create" element={<ProjectForm createProject={(projectName, repo) => this.createProject(projectName, repo)} />} />
                             <Route path="projects/:id"
                                 element={<ProjectDetail
                                     projects={this.state.projects}
                                     users={this.state.users} />} />
-                            <Route path="notes/*" element={<TodoList notes={this.state.notes} />} >
+                            <Route path="notes/*" element={<TodoList notes={this.state.notes}
+                                deleteNote={(id) => this.deleteNote(id)} />} >
                                 <Route path=":id" element={<NoteDetail notes={this.state.notes} />} />
                             </Route>
                             <Route path="login" element={<LoginForm get_token={

@@ -19,7 +19,7 @@ class SimpleProjectModelSerializer(ModelSerializer):
         fields = ['project_name', 'workers', 'url']
 
 
-class ToDoModelSerializer(HyperlinkedModelSerializer):
+class ToDoModelSerializer(ModelSerializer):
     project = SimpleProjectModelSerializer()
     created_by = StringRelatedField(many=False)
 

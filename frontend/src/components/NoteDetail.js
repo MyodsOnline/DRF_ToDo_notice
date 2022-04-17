@@ -11,7 +11,7 @@ const NoteDetail = ({notes}) => {
 
     return (
     <tr>
-        <td colspan="4">
+        <td colSpan="4">
             {id}
         </td>
     </tr>

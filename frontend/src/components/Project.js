@@ -6,7 +6,7 @@ const ProjectItem = ({project, users, deleteProject}) => {
     console.log(project)
    return (
         <tr className="table_tr">
-            <td>{project.id}</td>
+            <td>{project.projectName}</td>
             <td><a href={project.repoLink} target="_blank">link</a></td>
             <td>{project.workers}</td>
             <td>
@@ -19,6 +19,7 @@ const ProjectItem = ({project, users, deleteProject}) => {
 
 const ProjectList = ({projects, users, deleteProject}) => {
    return (
+        <div>
         <table>
             <caption>Active projects</caption>
             <thead>
@@ -34,6 +35,8 @@ const ProjectList = ({projects, users, deleteProject}) => {
                 {projects.map((project) => <ProjectItem project={project} deleteProject={deleteProject} users={users} key={project.id} />)}
             </tbody>
         </table>
+        <Link to='create'>Create</Link>
+        </div>
    )
 }
 
