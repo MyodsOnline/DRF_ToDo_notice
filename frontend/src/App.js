@@ -125,9 +125,23 @@ class App extends React.Component {
     }
 
     createProject(projectName, repo) {
-        const headers = this.get_headers()
-        const data = {projectName: projectName, repo: repo}
-        console.log(data)
+         console.log('Create project');
+
+         const headers = this.get_headers()
+         const data = {projectName: projectName, repo: repo};
+         axios.post(`http://127.0.0.1:8081/api/projects/`, data, {headers})
+             .then(response => {
+                 this.setState({projects: [...this.state.projects, response.data]});
+             }).catch(error => console.log(error))
+     }
+
+    createNote(project, createdBy, text) {
+        const headers = this.getHeaders()
+        const data = {project: project, createdBy: createdBy, text: text}
+        axios.post(`http://127.0.0.1:8081/api/todo/`, data, {headers})
+            .then(response => {
+                this.loadData()
+            }).catch(error => {console.log(error)})
     }
 
     render () {
@@ -144,7 +158,8 @@ class App extends React.Component {
                                     projects={this.state.projects}
                                     users={this.state.users}
                                     deleteProject={(id) => this.deleteProject(id)} />} />
-                            <Route path="projects/create" element={<ProjectForm createProject={(projectName, repo) => this.createProject(projectName, repo)} />} />
+                            <Route path="projects/create" element={<ProjectForm
+                                createProject={(projectName, repo) => this.createProject(projectName, repo)} />} />
                             <Route path="projects/:id"
                                 element={<ProjectDetail
                                     projects={this.state.projects}
@@ -153,6 +168,10 @@ class App extends React.Component {
                                 deleteNote={(id) => this.deleteNote(id)} />} >
                                 <Route path=":id" element={<NoteDetail notes={this.state.notes} />} />
                             </Route>
+                            <Route path="notes/create" element={<NoteForm
+                                createNote={(project, users, text) => this.createNote(project, users, text)}
+                                createdBy={this.state.createdBy}
+                                projects={this.state.projects} />} />
                             <Route path="login" element={<LoginForm get_token={
                                 (username, password) => this.get_token(username, password)} />} />
                             <Route path="*" element={<NotFound404 />} />

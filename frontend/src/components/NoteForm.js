@@ -5,9 +5,8 @@ class NoteForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: '',
-            project: 0,
-            user: 0,
+            project: props.projects,
+            users: props.users,
             text: ''
         }
     }
@@ -21,7 +20,7 @@ class NoteForm extends React.Component {
     }
 
     handleSubmit(event) {
-        this.props.createNote(this.state.name, this.state.project, this.state.user, this.state.text)
+        this.props.createNote(this.state.project, this.state.createdBy, this.state.text)
         event.preventDefault()
     }
 
@@ -29,26 +28,19 @@ class NoteForm extends React.Component {
         return (
             <form onSubmit={(event) => this.handleSubmit(event)}>
                 <div className="form-group">
-                    <label htmlFor="name">name</label>
-                    <input type="text" className="form-control" name="name" value={this.state.name}
-                           onChange={(event) => this.handleChange(event)}/>
-                </div>
-
-                <div className="form-group">
                     <label htmlFor="project">project</label>
-
-                    <input type="number" className="form-control" name="project" value={this.state.project}
-                           onChange={(event) => this.handleChange(event)}/>
+                    <select name="project"
+                             onChange={(event) => this.handleChange(event)}>
+                         {this.props.projects.map((project) => <option value={project.id}>{project.projectName}</option>)}
+                    </select>
                 </div>
                 <div className="form-group">
                     <label htmlFor="user">user</label>
-
-                    <input type="number" className="form-control" name="user" value={this.state.user}
+                    <input type="number" className="form-control" name="user" value={this.state.createdBy}
                            onChange={(event) => this.handleChange(event)}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="text">text</label>
-
                     <input type="text" className="form-control" name="text" value={this.state.text}
                            onChange={(event) => this.handleChange(event)}/>
                 </div>
