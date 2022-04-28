@@ -7,7 +7,7 @@ from .serializers import UserModelSerializer, AdvancedModelSerializer
 
 
 class UserModelViewSet(generics.ListAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    # permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = User.objects.all()
     serializer_class = UserModelSerializer
 

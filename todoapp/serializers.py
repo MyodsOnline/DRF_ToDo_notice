@@ -3,7 +3,7 @@ from rest_framework.serializers import HyperlinkedModelSerializer, ModelSerializ
 from .models import Project, ToDo
 
 
-class ProjectModelSerializer(HyperlinkedModelSerializer):
+class ProjectModelSerializer(ModelSerializer):
     workers = StringRelatedField(many=True)
 
     class Meta:
@@ -19,7 +19,7 @@ class SimpleProjectModelSerializer(ModelSerializer):
         fields = ['project_name', 'workers', 'url']
 
 
-class ToDoModelSerializer(HyperlinkedModelSerializer):
+class ToDoModelSerializer(ModelSerializer):
     project = SimpleProjectModelSerializer()
     created_by = StringRelatedField(many=False)
 
