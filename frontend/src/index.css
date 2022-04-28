@@ -12,13 +12,53 @@ code {
     monospace;
 }
 
-header, footer{
-    color: red;
+header, footer {
+    display: flex;
+    justify-content: center;
     font-weight: 700;
     padding: 30px 0;
+    font-size: 20px;
+    background: ghostwhite;
+}
+
+.home ul {
+    list-style: none;
+}
+
+footer {
+    flex-direction: column;
+}
+
+footer span {
+    padding-top: 15px;
+    font-weight: 100;
+}
+
+nav {
+    display: flex;
+    width: 500px;
+    justify-content: space-around;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+.active {
+    text-decoration: underline;
+}
+
+.table_tr {
+    background: lightgray;
 }
 
 table{
-    margin: 0 auto;
+    margin: 30px auto;
     border: 1px solid;
+}
+
+caption {
+    padding-bottom: 10px;
+    font-size: 20px;
+    font-weight: 700;
 }

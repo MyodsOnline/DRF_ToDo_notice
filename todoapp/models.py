@@ -5,7 +5,7 @@ from users.models import User
 
 
 class Project(models.Model):
-    uid = models.UUIDField(primary_key=True, default=uuid4)
+    id = models.UUIDField(primary_key=True, default=uuid4)
     project_name = models.CharField(max_length=64, verbose_name='Project name')
     repo_link = models.URLField(unique=True, verbose_name='Link to Git')
     workers = models.ManyToManyField(User, verbose_name='Workers')
